@@ -5,11 +5,11 @@
         {
           "version": "0.1.0",
           "update_link": "https://github.com/sciencemaverick/zotero-getcitation/releases/download/v0.1.0/getcitation-0.1.0.xpi",
-          "update_hash": "sha256:194980c7b7161b5a01b3ae5fc48391cfb2b5fafe89d1e8e5e132ea16d152d307",
+          "update_hash": "sha256:a122aa674443e9f1bd269aa36034a2d359f529df30ddf1977e2121e452dbf964",
           "applications": {
             "zotero": {
-              "strict_min_version": "7.0",
-              "strict_max_version": "7.0.*"
+              "strict_min_version": "6.999",
+              "strict_max_version": "9.*"
             }
           }
         }

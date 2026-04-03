@@ -21,7 +21,6 @@ cp "$ROOT_DIR/assets/icon-48.png" "$TMP_DIR/assets/"
 cp "$ROOT_DIR/assets/icon-96.png" "$TMP_DIR/assets/"
 
 cd "$TMP_DIR"
-cp "$ROOT_DIR/updates.json" "$TMP_DIR/"
-zip -qr "$OUTPUT_FILE" manifest.json bootstrap.js preferences.xhtml preferences.js prefs.js updates.json assets/icon-48.png assets/icon-96.png
+zip -qr "$OUTPUT_FILE" manifest.json bootstrap.js preferences.xhtml preferences.js prefs.js assets/icon-48.png assets/icon-96.png
 
 echo "Built: $OUTPUT_FILE"
