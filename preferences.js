@@ -1,18 +1,82 @@
 var { FilePicker } = ChromeUtils.importESModule("chrome://zotero/content/modules/filePicker.mjs");
 
 var GetCitationPrefs = {
+  rootID: "getcitation-preferences-root",
+  saveButtonID: "getcitation-save-button",
+  resetButtonID: "getcitation-reset-button",
+  exportButtonID: "getcitation-export-log-button",
   sourcePref: "extensions.getcitation.sourceOrder",
   apiKeyPref: "extensions.getcitation.semanticScholarApiKey",
   logPref: "extensions.getcitation.logBuffer",
   defaultSourceOrder: "semanticscholar,crossref,inspire",
   defaultApiKey: "",
+  _bound: false,
+  _observer: null,
 
   init() {
-    document.getElementById("getcitation-source-order").value =
+    const sourceInput = document.getElementById("getcitation-source-order");
+    const apiKeyInput = document.getElementById("getcitation-semantic-scholar-api-key");
+    if (!sourceInput || !apiKeyInput) {
+      return;
+    }
+
+    sourceInput.value =
       Zotero.Prefs.get(this.sourcePref, true) || this.defaultSourceOrder;
-    document.getElementById("getcitation-semantic-scholar-api-key").value =
+    apiKeyInput.value =
       Zotero.Prefs.get(this.apiKeyPref, true) || this.defaultApiKey;
     this.setStatus("");
+  },
+
+  bindUI() {
+    if (this._bound) {
+      return;
+    }
+
+    const root = document.getElementById(this.rootID);
+    const saveButton = document.getElementById(this.saveButtonID);
+    const resetButton = document.getElementById(this.resetButtonID);
+    const exportButton = document.getElementById(this.exportButtonID);
+    if (!root || !saveButton || !resetButton || !exportButton) {
+      return;
+    }
+
+    saveButton.addEventListener("click", () => this.save());
+    resetButton.addEventListener("click", () => this.resetDefaults());
+    exportButton.addEventListener("click", () => {
+      void this.exportLog();
+    });
+    root.addEventListener("showing", () => this.init());
+    root.addEventListener("unload", () => this.teardown(), { once: true });
+
+    this._bound = true;
+    this.init();
+  },
+
+  observeUntilReady() {
+    this.bindUI();
+    if (this._bound) {
+      return;
+    }
+
+    this._observer = new MutationObserver(() => {
+      this.bindUI();
+      if (this._bound) {
+        this.teardownObserver();
+      }
+    });
+    this._observer.observe(document, { childList: true, subtree: true });
+  },
+
+  teardownObserver() {
+    if (this._observer) {
+      this._observer.disconnect();
+      this._observer = null;
+    }
+  },
+
+  teardown() {
+    this.teardownObserver();
+    this._bound = false;
   },
 
   save() {
@@ -224,3 +288,5 @@ var GetCitationPrefs = {
     }
   }
 };
+
+GetCitationPrefs.observeUntilReady();

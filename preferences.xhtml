@@ -1,4 +1,4 @@
-<vbox onload="GetCitationPrefs.init()">
+<vbox id="getcitation-preferences-root">
   <groupbox>
     <label value="Citation Sources" />
     <description>
@@ -26,9 +26,9 @@
   </groupbox>
 
   <hbox style="margin-top: 10px; gap: 8px;">
-    <button label="Save" oncommand="GetCitationPrefs.save()" />
-    <button label="Reset to Defaults" oncommand="GetCitationPrefs.resetDefaults()" />
-    <button label="Export Log" oncommand="void GetCitationPrefs.exportLog()" />
+    <button id="getcitation-save-button" type="button" label="Save" />
+    <button id="getcitation-reset-button" type="button" label="Reset to Defaults" />
+    <button id="getcitation-export-log-button" type="button" label="Export Log" />
   </hbox>
 
   <description id="getcitation-preferences-status" style="margin-top: 10px;" />
