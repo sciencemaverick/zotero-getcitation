@@ -39,24 +39,51 @@ var GetCitationPrefs = {
   },
 
   async exportLog() {
-    try {
-      const fp = new FilePicker();
-      fp.init(window, "Export Get Citation Log", fp.modeSave);
-      fp.appendFilter("Text File", "*.txt");
-      fp.defaultExtension = "txt";
-      fp.defaultString = `getcitation-log-${this.timestampForFilename()}.txt`;
+    const exportText = this.buildExportText();
+    let outputPath = "";
+    let usedFallback = false;
+    let pickerError = null;
 
-      const result = await fp.show();
-      if (result !== fp.returnOK && result !== fp.returnReplace) {
-        this.setStatus("Export cancelled.");
-        return;
+    try {
+      try {
+        const fp = new FilePicker();
+        fp.init(window, "Export Get Citation Log", fp.modeSave);
+        fp.appendFilter("Text File", "*.txt");
+        fp.defaultExtension = "txt";
+        fp.defaultString = `getcitation-log-${this.timestampForFilename()}.txt`;
+
+        const result = await fp.show();
+        if (result !== fp.returnOK && result !== fp.returnReplace) {
+          this.setStatus("Export cancelled.");
+          return;
+        }
+
+        outputPath = fp.file;
+      }
+      catch (error) {
+        pickerError = error;
       }
 
-      await Zotero.File.putContentsAsync(fp.file, this.buildExportText());
-      this.setStatus(`Log exported to ${fp.file}`);
+      if (!outputPath) {
+        outputPath = this.getFallbackExportPath();
+        usedFallback = true;
+      }
+
+      await Zotero.File.putContentsAsync(outputPath, exportText);
+      this.setStatus(`Log exported to ${outputPath}`);
+      this.showAlert(
+        "Get Citation",
+        usedFallback
+          ? `Log exported to:\n${outputPath}\n\nThe file picker was unavailable, so a fallback location was used.`
+          : `Log exported to:\n${outputPath}`
+      );
     }
     catch (error) {
       this.setStatus(`Export failed: ${error?.message || error}`, true);
+      this.showAlert(
+        "Get Citation",
+        `Log export failed.\n\n${error?.message || error}${pickerError ? `\n\nFile picker error: ${pickerError?.message || pickerError}` : ""}`
+      );
     }
   },
 
@@ -176,5 +203,24 @@ var GetCitationPrefs = {
 
   timestampForFilename() {
     return new Date().toISOString().replace(/[:]/g, "-").replace(/\..+/, "");
+  },
+
+  getFallbackExportPath() {
+    const fileName = `getcitation-log-${this.timestampForFilename()}.txt`;
+
+    try {
+      return PathUtils.join(Services.dirsvc.get("Desk", Ci.nsIFile).path, fileName);
+    }
+    catch (_error) {
+      return PathUtils.join(Zotero.DataDirectory.dir, fileName);
+    }
+  },
+
+  showAlert(title, message) {
+    try {
+      Services.prompt.alert(window, title, message);
+    }
+    catch (_error) {
+    }
   }
 };

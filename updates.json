@@ -5,7 +5,7 @@
         {
           "version": "0.1.0",
           "update_link": "https://github.com/sciencemaverick/zotero-getcitation/releases/download/v0.1.0/getcitation-0.1.0.xpi",
-          "update_hash": "sha256:a122aa674443e9f1bd269aa36034a2d359f529df30ddf1977e2121e452dbf964",
+          "update_hash": "sha256:32a10a0d5a8e6b41f047065d6035e7b80db8078affec8234ad4e3daf0e4b4bdb",
           "applications": {
             "zotero": {
               "strict_min_version": "6.999",
