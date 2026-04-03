@@ -48,6 +48,13 @@ const SOURCE_DEFINITIONS = {
   }
 };
 
+const API_ENDPOINTS = {
+  semanticscholarGraph: "https://api.semanticscholar.org/graph/v1",
+  crossrefWorks: "https://api.crossref.org/works",
+  doiResolver: "https://doi.org",
+  inspire: "https://inspirehep.net/api"
+};
+
 const CITATION_LINE_PATTERNS = [
   /^Citations:\s*\d+\s*\((Semantic Scholar|Crossref|INSPIRE-HEP)\)\s*\[\d{4}-\d{2}-\d{2}\]$/i,
   /^\d+\s+citations\s+\((Semantic Scholar|Crossref|INSPIRE-HEP|Semantic Scholar\/DOI|Semantic Scholar\/arXiv|Crossref\/DOI|Inspire\/DOI|Inspire\/arXiv)\)\s*\[\d{4}-\d{2}-\d{2}\]$/i,
@@ -567,7 +574,7 @@ async function fetchSemanticScholarCount(item) {
     }
 
     const response = await httpJSON(
-      `https://api.semanticscholar.org/graph/v1/paper/${encodeURIComponent(prefix + id)}?fields=paperId,citationCount,title,year`,
+      `${API_ENDPOINTS.semanticscholarGraph}/paper/${encodeURIComponent(prefix + id)}?fields=paperId,citationCount,title,year`,
       {
         Accept: "application/json",
         "x-api-key": apiKey
@@ -625,7 +632,7 @@ async function fetchSemanticScholarByTitle(item, apiKey) {
   await RateLimitManager.wait("semanticscholar");
 
   const response = await httpJSON(
-    `https://api.semanticscholar.org/graph/v1/paper/search?query=${encodeURIComponent(title)}&limit=10&fields=title,year,citationCount`,
+    `${API_ENDPOINTS.semanticscholarGraph}/paper/search?query=${encodeURIComponent(title)}&limit=10&fields=title,year,citationCount`,
     {
       Accept: "application/json",
       "x-api-key": apiKey
@@ -683,7 +690,7 @@ async function fetchCrossrefCount(item) {
   await RateLimitManager.wait("crossref");
 
   const encodedDOI = encodeURIComponent(doi);
-  const url = `https://api.crossref.org/works/${encodedDOI}/transform/application/vnd.citationstyles.csl+json`;
+  const url = `${API_ENDPOINTS.crossrefWorks}/${encodedDOI}/transform/application/vnd.citationstyles.csl+json`;
   let response = await httpJSON(url, { Accept: "application/json" });
 
   if (response.status === 429) {
@@ -695,7 +702,7 @@ async function fetchCrossrefCount(item) {
   }
 
   if (response.status === 404 || response.status >= 500 || !response.json) {
-    response = await httpJSON(`https://doi.org/${encodedDOI}`, {
+    response = await httpJSON(`${API_ENDPOINTS.doiResolver}/${encodedDOI}`, {
       Accept: "application/vnd.citationstyles.csl+json"
     });
   }
@@ -743,7 +750,7 @@ async function fetchInspireCount(item) {
 
     const pathType = identifier.type === "doi" ? "dois" : "arxiv";
     const response = await httpJSON(
-      `https://inspirehep.net/api/${pathType}/${encodeURIComponent(identifier.id)}`,
+      `${API_ENDPOINTS.inspire}/${pathType}/${encodeURIComponent(identifier.id)}`,
       { Accept: "application/json" }
     );
 

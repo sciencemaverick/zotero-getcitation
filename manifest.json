@@ -8,7 +8,6 @@
   "applications": {
     "zotero": {
       "id": "getcitation@example.com",
-      "update_url": "https://example.invalid/zotero-getcitation-updates.json",
       "strict_min_version": "7.0",
       "strict_max_version": "7.1.*"
     }
