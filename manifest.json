@@ -4,7 +4,7 @@
   "version": "0.1.0",
   "description": "Retrieve citation counts for Zotero items from Semantic Scholar, Crossref, and INSPIRE-HEP.",
   "author": "jake",
-  "homepage_url": "https://example.invalid/zotero-getcitation",
+  "homepage_url": "https://github.com/sciencemaverick/zotero-getcitation",
   "applications": {
     "zotero": {
       "id": "getcitation@example.com",

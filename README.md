@@ -20,7 +20,7 @@ Install:
    ./scripts/build.sh
    ```
 
-2. Install [dist/getcitation-0.1.0.xpi](/Users/jake/home/CodingProjects/zotero-getcitation/dist/getcitation-0.1.0.xpi) in Zotero:
+2. Install [`dist/getcitation-0.1.0.xpi`](./dist/getcitation-0.1.0.xpi) in Zotero:
    `Tools` -> `Plugins` -> gear icon -> `Install Add-on From File...`
 
 3. Open Zotero settings:
@@ -71,7 +71,7 @@ Notes:
    ./scripts/build.sh
    ```
 
-2. Zotero에서 [dist/getcitation-0.1.0.xpi](/Users/jake/home/CodingProjects/zotero-getcitation/dist/getcitation-0.1.0.xpi) 설치:
+2. Zotero에서 [`dist/getcitation-0.1.0.xpi`](./dist/getcitation-0.1.0.xpi) 설치:
    `Tools` -> `Plugins` -> 톱니바퀴 -> `Install Add-on From File...`
 
 3. Zotero 설정 열기:
