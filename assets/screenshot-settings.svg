@@ -1,0 +1,27 @@
+<svg width="1200" height="760" viewBox="0 0 1200 760" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="760" fill="#F3F6FB"/>
+  <rect x="56" y="54" width="1088" height="652" rx="28" fill="white"/>
+  <rect x="56" y="54" width="240" height="652" rx="28" fill="#123670"/>
+  <rect x="88" y="104" width="132" height="18" rx="9" fill="#8CB4FF" fill-opacity="0.35"/>
+  <rect x="88" y="156" width="176" height="14" rx="7" fill="#8CB4FF" fill-opacity="0.24"/>
+  <rect x="88" y="188" width="152" height="14" rx="7" fill="#8CB4FF" fill-opacity="0.24"/>
+  <rect x="88" y="220" width="164" height="14" rx="7" fill="#8CB4FF" fill-opacity="0.24"/>
+  <rect x="328" y="96" width="220" height="20" rx="10" fill="#0F172A"/>
+  <rect x="328" y="152" width="792" height="138" rx="22" fill="#F7FAFF" stroke="#D6E3FF"/>
+  <rect x="360" y="184" width="220" height="14" rx="7" fill="#0F172A"/>
+  <rect x="360" y="214" width="456" height="10" rx="5" fill="#94A3B8"/>
+  <rect x="360" y="244" width="694" height="20" rx="10" fill="white" stroke="#B9CCF9"/>
+  <rect x="328" y="318" width="792" height="170" rx="22" fill="#F7FAFF" stroke="#D6E3FF"/>
+  <rect x="360" y="350" width="248" height="14" rx="7" fill="#0F172A"/>
+  <rect x="360" y="380" width="540" height="10" rx="5" fill="#94A3B8"/>
+  <rect x="360" y="410" width="694" height="20" rx="10" fill="white" stroke="#B9CCF9"/>
+  <rect x="328" y="532" width="154" height="44" rx="14" fill="#1F6FEB"/>
+  <rect x="498" y="532" width="210" height="44" rx="14" fill="#E8EEF9"/>
+  <rect x="724" y="532" width="180" height="44" rx="14" fill="#0F172A"/>
+  <rect x="328" y="610" width="400" height="14" rx="7" fill="#16A34A" fill-opacity="0.5"/>
+  <text x="360" y="366" fill="#0F172A" font-family="Arial, sans-serif" font-size="32" font-weight="700">Settings: add API key, save, export log</text>
+  <text x="360" y="204" fill="#0F172A" font-family="Arial, sans-serif" font-size="28" font-weight="700">Source order</text>
+  <text x="360" y="592" fill="white" font-family="Arial, sans-serif" font-size="24" font-weight="700">Save</text>
+  <text x="539" y="592" fill="#0F172A" font-family="Arial, sans-serif" font-size="24" font-weight="700">Reset to Defaults</text>
+  <text x="756" y="592" fill="white" font-family="Arial, sans-serif" font-size="24" font-weight="700">Export Log</text>
+</svg>

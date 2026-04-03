@@ -1,5 +1,7 @@
 # Zotero Get Citation
 
+![Zotero Get Citation icon](./assets/icon.svg)
+
 ## English
 
 I built this because several Zotero citation-count extensions kept failing in my workflow, and I wanted a smaller, simpler one that I could trust and debug myself.
@@ -11,6 +13,11 @@ What it does:
 - Tries sources in this order: `Semantic Scholar` -> `Crossref` -> `INSPIRE-HEP`
 - Stores the result in `Extra` as a plain number such as `188`
 - Lets you export a support log from settings when something goes wrong
+
+Preview:
+
+![Settings screenshot](./assets/screenshot-settings.svg)
+![Menu screenshot](./assets/screenshot-menu.svg)
 
 Install:
 
@@ -62,6 +69,11 @@ Notes:
 - `Semantic Scholar` -> `Crossref` -> `INSPIRE-HEP` 순서로 조회
 - 결과를 `Extra`에 `188` 같은 숫자만 저장
 - 문제가 생기면 설정창에서 support log를 export 가능
+
+미리보기:
+
+![Settings screenshot](./assets/screenshot-settings.svg)
+![Menu screenshot](./assets/screenshot-menu.svg)
 
 설치:
 
