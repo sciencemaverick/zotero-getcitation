@@ -17,10 +17,11 @@ cp "$ROOT_DIR/preferences.xhtml" "$TMP_DIR/"
 cp "$ROOT_DIR/preferences.js" "$TMP_DIR/"
 cp "$ROOT_DIR/prefs.js" "$TMP_DIR/"
 mkdir -p "$TMP_DIR/assets"
-cp "$ROOT_DIR/assets/icon-64.png" "$TMP_DIR/assets/"
-cp "$ROOT_DIR/assets/icon-128.png" "$TMP_DIR/assets/"
+cp "$ROOT_DIR/assets/icon-48.png" "$TMP_DIR/assets/"
+cp "$ROOT_DIR/assets/icon-96.png" "$TMP_DIR/assets/"
 
 cd "$TMP_DIR"
-zip -qr "$OUTPUT_FILE" manifest.json bootstrap.js preferences.xhtml preferences.js prefs.js assets/icon-64.png assets/icon-128.png
+cp "$ROOT_DIR/updates.json" "$TMP_DIR/"
+zip -qr "$OUTPUT_FILE" manifest.json bootstrap.js preferences.xhtml preferences.js prefs.js updates.json assets/icon-48.png assets/icon-96.png
 
 echo "Built: $OUTPUT_FILE"

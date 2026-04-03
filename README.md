@@ -30,6 +30,9 @@ Install:
 2. Install [`dist/getcitation-0.1.0.xpi`](./dist/getcitation-0.1.0.xpi) in Zotero:
    `Tools` -> `Plugins` -> gear icon -> `Install Add-on From File...`
 
+   Or download it from the GitHub release:
+   https://github.com/sciencemaverick/zotero-getcitation/releases/tag/v0.1.0
+
 3. Open Zotero settings:
    `Settings` -> `Get Citation`
 
@@ -85,6 +88,9 @@ Notes:
 
 2. Zotero에서 [`dist/getcitation-0.1.0.xpi`](./dist/getcitation-0.1.0.xpi) 설치:
    `Tools` -> `Plugins` -> 톱니바퀴 -> `Install Add-on From File...`
+
+   또는 GitHub Release에서 바로 다운로드:
+   https://github.com/sciencemaverick/zotero-getcitation/releases/tag/v0.1.0
 
 3. Zotero 설정 열기:
    `Settings` -> `Get Citation`
