@@ -1,0 +1,35 @@
+<vbox onload="GetCitationPrefs.init()">
+  <groupbox>
+    <label value="Citation Sources" />
+    <description>
+      Enter one or more sources in priority order, separated by commas.
+      Available sources: semanticscholar, crossref, inspire
+    </description>
+    <html:input
+      id="getcitation-source-order"
+      type="text"
+      style="width: 100%; min-width: 320px;"
+    />
+  </groupbox>
+
+  <groupbox>
+    <label value="Semantic Scholar API Key" />
+    <description>
+      Optional, but strongly recommended if you want Semantic Scholar lookup.
+      The key is stored only in your local Zotero preferences and is not committed to git.
+    </description>
+    <html:input
+      id="getcitation-semantic-scholar-api-key"
+      type="password"
+      style="width: 100%; min-width: 320px;"
+    />
+  </groupbox>
+
+  <hbox style="margin-top: 10px; gap: 8px;">
+    <button label="Save" oncommand="GetCitationPrefs.save()" />
+    <button label="Reset to Defaults" oncommand="GetCitationPrefs.resetDefaults()" />
+    <button label="Export Log" oncommand="void GetCitationPrefs.exportLog()" />
+  </hbox>
+
+  <description id="getcitation-preferences-status" style="margin-top: 10px;" />
+</vbox>

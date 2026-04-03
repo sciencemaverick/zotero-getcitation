@@ -1,0 +1,16 @@
+{
+  "manifest_version": 2,
+  "name": "Get Citation",
+  "version": "0.1.0",
+  "description": "Retrieve citation counts for Zotero items from Semantic Scholar, Crossref, and INSPIRE-HEP.",
+  "author": "jake",
+  "homepage_url": "https://example.invalid/zotero-getcitation",
+  "applications": {
+    "zotero": {
+      "id": "getcitation@example.com",
+      "update_url": "https://example.invalid/zotero-getcitation-updates.json",
+      "strict_min_version": "7.0",
+      "strict_max_version": "7.1.*"
+    }
+  }
+}
